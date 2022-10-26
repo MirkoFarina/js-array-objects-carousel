@@ -76,9 +76,11 @@ buttonRight.addEventListener('click', function(){
   isLeft = false;
   sliderNextPrev(isLeft,arrayImgTop,arrayImgBottom );
 })
+
+buttonShuffle.cliccato = false;
 buttonShuffle.addEventListener('click', function(){
-  let isShuffle = true;
-  shuffle(isShuffle);
+  buttonShuffle.cliccato = !buttonShuffle.cliccato;
+  shuffle(buttonShuffle.cliccato);
   buttonShuffle.innerHTML = 'INVERTI';
 });
 buttonStop.addEventListener('click', function(){
