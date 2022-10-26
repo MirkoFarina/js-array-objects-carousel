@@ -30,10 +30,10 @@ button {
 
 .slider {
   width: 80%;
+  position: relative;
 }
 
 .container-slider-top {
-  background-color: gray;
   width: 100%;
   position: relative;
 }
@@ -65,16 +65,17 @@ button {
   height: 500px;
   object-fit: cover;
   object-position: center;
+  display: block;
 }
 .container-slider-bottom {
   position: relative;
   display: flex;
   align-items: flex-start;
-  background-color: violet;
   width: 100%;
 }
 .img-slider-bottom {
   width: calc(100% / 5);
+  filter: brightness(.4);
 }
 
 .img-slider-bottom img {
@@ -82,7 +83,7 @@ button {
   height: 120px;
   display: block;
   object-fit: cover;
-  filter: brightness(.4);
+
 }
 
 .button .btn {
@@ -92,6 +93,7 @@ button {
   transform: translateY(-50%);
   opacity: .8;
   color: white;
+  z-index: 10;
 }
 
 .btn.right{
@@ -102,6 +104,6 @@ button {
   left: 10px;
 }
 
-img.active {
+.img-slider-bottom.active {
   filter: brightness(1);
 }

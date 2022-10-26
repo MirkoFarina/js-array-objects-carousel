@@ -37,11 +37,95 @@ const postiDaVisitare = [
   }
 ];
 
-// 1 richiamare tutti i tag che mi servono
 const containerImgLg = document.querySelector('.container-slider-top');
 const containerImgXs = document.querySelector('.container-slider-bottom');
-// 2 create tutti gli elementi html che mi servono e comporre esso dinamicamente
+const buttonRight = document.querySelector('.btn.right');
+const buttonLeft = document.querySelector('.btn.left');
 
-// 3 usare i bottini right e left per andare avanti e dietro con le immagini usando lo spostamento delle classi
-// 4 creare il loop per far si che torni indietro nello scorrimento
+// creo l'html dinamicamente
+postiDaVisitare.forEach(luogo => {
+  createContentTop(luogo);
+  createContentBottom(luogo);
+});
 
+// creo la situazione di default
+
+document.querySelector('.img-slider-top').classList.remove('d-none');
+document.querySelector('.img-slider-bottom img').classList.add('active');
+let counter = 0;
+
+
+
+
+// creo i due arrey contenenti la mia collezione di immagini
+const arrayImgTop = document.getElementsByClassName('img-slider-top');
+const arrayImgBottom = document.getElementsByClassName('img-slider-bottom');
+let isLeft;
+
+
+buttonLeft.addEventListener('click', function(){
+  isLeft = true;
+  sliderNextPrev(isLeft,arrayImgTop,arrayImgBottom );
+})
+buttonRight.addEventListener('click', function(){
+  isLeft = false;
+  sliderNextPrev(isLeft,arrayImgTop,arrayImgBottom );
+})
+
+
+
+
+
+
+
+
+
+
+
+
+//FUNZIONI
+function createContentTop(oggetto){
+ let contentTop = '';
+ 
+  contentTop = `
+  <div class="img-slider-top d-none">
+    <img src="img/${oggetto.urlImg}" alt="${oggetto.nome}"> 
+  
+    <div class="description">
+      <h2> ${oggetto.nome}  </h2>
+      <p>  ${oggetto.descrizione} </p>
+    </div>
+  </div>  
+`;
+
+containerImgLg.innerHTML += contentTop;
+};
+
+function createContentBottom(oggetto){
+let contentBottom = '';
+
+
+contentBottom = `
+  <div class="img-slider-bottom">
+    <img class="" src="img/${oggetto.urlImg}" alt="${oggetto.nome}">
+  </div>
+`;
+
+containerImgXs.innerHTML += contentBottom;
+};
+
+function sliderNextPrev(flag,array1, array2){
+  array1[counter].classList.add('d-none');
+  array2[counter].classList.remove('active');
+
+  if(!(flag)) {
+    ++counter
+    if(counter == postiDaVisitare.length) counter = 0;
+  } else {
+    if(counter == 0) counter = postiDaVisitare.length;
+    --counter
+  }
+  
+  array1[counter].classList.remove('d-none');
+  array2[counter].classList.add('active')
+}
