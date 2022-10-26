@@ -12,6 +12,7 @@ body {
 button {
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
 
 .d-none {
@@ -26,6 +27,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .slider {
@@ -106,4 +108,13 @@ button {
 
 .img-slider-bottom.active {
   filter: brightness(1);
+}
+
+.scegli-verso button {
+  background-color: black;
+  color: white;
+ padding: 10px 0;
+  width: 100px;
+  margin-top: 50px;
+  margin-left: 20px;
 }
