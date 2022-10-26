@@ -1,14 +1,3 @@
-/* 
-  **Consegna:**
-Riprendiamo l’esercizio carosello e rifacciamolo, questa volta usando un array di oggetti.
-Ogni elemento deve avere un titolo, una descrizione e il riferimento ad una immagine.
-**Bonus 1:**
-Sperimentiamo attraverso l’uso delle timing functions anche una funzionalità di scorrimento al nostro carosello:al click di un bottone o già dall’inizio possiamo far partire, ad intervalli di tempo a piacere, lo scorrimento delle immagini disponibili nel carosello stesso.
-****
-**Bonus 2:**
-E se volessi un bottone per invertire la “direzione” del carosello?
-****
-*/ 
 const postiDaVisitare = [
   {
     nome: "Italia",
@@ -39,6 +28,7 @@ const postiDaVisitare = [
 
 const containerImgLg = document.querySelector('.container-slider-top');
 const containerImgXs = document.querySelector('.container-slider-bottom');
+const slider = document.querySelector('.slider');
 const buttonRight = document.querySelector('.btn.right');
 const buttonLeft = document.querySelector('.btn.left');
 const buttonShuffle = document.querySelector('.shuffle');
@@ -86,6 +76,13 @@ buttonShuffle.addEventListener('click', function(){
 buttonStop.addEventListener('click', function(){
   clearInterval(timing);
   buttonShuffle.innerHTML = 'START';
+})
+
+slider.addEventListener('mouseover', function(){
+  clearInterval(timing);
+})
+slider.addEventListener('mouseout', function(){
+  timingCarousel();
 })
 
 
@@ -143,6 +140,7 @@ function sliderNextPrev(flag,array1, array2){
   
   array1[counter].classList.remove('d-none');
   array2[counter].classList.add('active')
+  return counter;
 }
 
 function timingCarousel(flag){

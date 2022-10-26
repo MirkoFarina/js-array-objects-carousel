@@ -33,6 +33,7 @@ button {
 .slider {
   width: 80%;
   position: relative;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, .6);
 }
 
 .container-slider-top {
